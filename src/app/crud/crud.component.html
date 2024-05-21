@@ -1,0 +1,49 @@
+<form #frmReg="ngForm" (ngSubmit)="save()" novalidate="">
+
+    Roll No:<input type="text" name="rollno" [(ngModel)]="regObj.rollno" #rollno="ngModel" /><br><br>
+    First Name:<input type="text" name="firstName" [(ngModel)]="regObj.firstName" #firstName="ngModel" pattern="^[a-zA-Z]+" required/>
+    <span *ngIf="firstName.invalid && firstName.touched">Please enter valid names</span><br><br>
+    Last Name:<input type="text" name="lastName" [(ngModel)]="regObj.lastName" #lastName="ngModel" pattern="^[a-zA-Z]+" required/>
+    <span *ngIf="lastName.invalid && lastName.touched">Please enter valid names</span><br><br>
+    Email:<input type="text" name="email" [(ngModel)]="regObj.email" #email="ngModel" required/><br><br>
+    Contact No:<input type="text" name="contactNo" [(ngModel)]="regObj.contactNo" #contactNo="ngModel" required/>
+    <br><br>
+    Address:<input type="text" name="address" [(ngModel)]="regObj.address" #address="ngModel" required/><br><br>
+   Course:<input type="text" name="course" [(ngModel)]="regObj.course" #course="ngModel" required/><br><br>
+    Education:<input type="text" name="education" [(ngModel)]="regObj.education" #education="ngModel" required/><br><br>
+    
+    <input type="submit" value="REGISTER" [disabled]="frmReg.invalid"/>
+</form>
+
+
+
+<table border="3">
+    <tr>
+        <td><b>ID</b></td>
+        <td><b>RollNO</b></td>
+        <td><b> FirstName</b></td>
+        <td><b>LastName</b></td>
+        <td><b>Email</b></td>
+        <td><b>ContactNo</b></td>
+        <td><b>Address</b></td>
+        <td><b>Course</b></td>
+        <td><b>Education</b></td>
+        <th>Action 1</th>
+        <th>Action 2</th>
+    </tr>
+    <tr *ngFor="let j of studArr">
+
+        <td>{{j.id}}</td>
+        <td>{{j.rollno}}</td>
+        <td>{{j.firstName}}</td>
+        <td>{{j.lastName}}</td>
+        <td>{{j.email}}</td>
+        <td>{{j.contactNo}}</td>
+        <td>{{j.address}}</td>
+        <td>{{j.course}}</td>
+        <td>{{j.education}}</td>
+        <td><button (click)="editRec(j.id)">UPDATE</button></td>
+        <td><button (click)="delRec(j.id)">DELETE</button></td>
+
+    </tr>
+</table>
